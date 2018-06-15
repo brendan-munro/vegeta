@@ -65,7 +65,7 @@ func TestMetrics_Add(t *testing.T) {
 	}
 }
 
-// https://github.com/tsenart/vegeta/issues/208
+// https://github.com/brendan-munro/vegeta/issues/208
 func TestMetrics_NoInfiniteRate(t *testing.T) {
 	t.Parallel()
 
@@ -77,7 +77,7 @@ func TestMetrics_NoInfiniteRate(t *testing.T) {
 	}
 }
 
-// https://github.com/tsenart/vegeta/pull/277
+// https://github.com/brendan-munro/vegeta/pull/277
 func TestMetrics_NonNilErrorsOnClose(t *testing.T) {
 	t.Parallel()
 

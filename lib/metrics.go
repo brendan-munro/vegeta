@@ -55,6 +55,8 @@ type (
 		P95 time.Duration `json:"95th"`
 		// P99 is the 99th percentile request latency.
 		P99 time.Duration `json:"99th"`
+		// P999 is the 99.9th percentile request latency.
+		P999 time.Duration `json:"999th"`
 		// Max is the maximum observed request latency.
 		Max time.Duration `json:"max"`
 	}
@@ -126,6 +128,7 @@ func (m *Metrics) Close() {
 	m.Latencies.P50 = time.Duration(m.latencies.Get(0.50))
 	m.Latencies.P95 = time.Duration(m.latencies.Get(0.95))
 	m.Latencies.P99 = time.Duration(m.latencies.Get(0.99))
+	m.Latencies.P999 = time.Duration(m.latencies.Get(0.999))
 }
 
 func (m *Metrics) init() {
@@ -142,6 +145,7 @@ func (m *Metrics) init() {
 			quantile.Known(0.50, 0.01),
 			quantile.Known(0.95, 0.001),
 			quantile.Known(0.99, 0.0005),
+			quantile.Known(0.999, 0.0001),
 		)
 	}
 
